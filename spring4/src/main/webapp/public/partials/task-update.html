@@ -1,0 +1,42 @@
+<div id="update-task-panel" class="fadein fadeout addpanel panel">
+		<div class="panel-heading">
+			<i class="panel-title-icon fa fa-plus"></i>
+			<span class="panel-title">Update Task</span>
+			<div class="panel-heading-controls">
+				<button class="btn-panel">Show All Tasks</button>
+			</div>
+		</div>
+		<div class="panel-body">
+			<div class="task" >
+				<table class="add-task">
+					<tr>
+						<td>Task Name: </td>
+						<td><input type="text" ng-model="task.taskName" /></td>
+					</tr>
+					<tr>
+						<td>Task Description:</td>
+						<td><input type="text" ng-model="task.taskDescription" /></td>
+					</tr>
+					<tr>
+						<td>Task Status:</td>
+						<td>
+							<select ng-model="task.taskStatus" ng-options="status as status for status in statuses" >
+								<option value="">-- Select --</option>						
+						     	</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Task Priority:</td>
+						<td>
+							<select ng-model="task.taskPriority" ng-options="priority as priority for priority in priorities">
+								<option value="">-- Select --</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><br/><button ng-click="updateTask()" class="btn-panel-big">Update Task</button></td>
+					</tr>
+				</table>								
+			</div>
+		</div>
+	</div>
