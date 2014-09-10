@@ -1,0 +1,28 @@
+<!doctype html>
+<html ng-app>
+	<head>
+		<title>Hello AngularJS</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    	<script src="hello.js"></script>
+	</head>
+
+	<body>
+		<div ng-controller="Hello">
+			<p>Json Data from http://rest-service.guides.spring.io/greeting</p>
+			<p>The ID is {{greeting.id}}</p>
+			<p>The content is {{greeting.content}}</p>
+		</div>
+		
+		
+		
+		<div ng-controller="Person">
+			<p>Json Data from http://localhost:8080/spring4/data/person</p>
+			<p>The ID is {{person.id}}</p>
+			<p>The location is {{person.location}}</p>
+			<p>The name is {{person.name}}</p>
+		</div>
+		
+		
+		
+	</body>
+</html>

@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: spring4
+Bundle-SymbolicName: spring4
+Bundle-Version: 1.0.0.qualifier
+Export-Package: com.fabricgroup.spring4,
+ com.fabricgroup.spring4.component,
+ com.fabricgroup.spring4.config
+Require-Bundle: org.junit
