@@ -26,7 +26,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class TaskManagerService {
 
-	private final String TASK_JSON_FILE_LOCATION = "/Users/charles.wu/Documents/workspace/spring4/task.txt";
+	private final String TASK_JSON_FILE_LOCATION = "/Users/charles.wu/git/CharlesGit/spring4/task.txt";
 	public List<Task> getAllTasks() {
 		
 		List<Task> listOfTasks = new ArrayList<Task>();
