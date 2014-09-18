@@ -90,6 +90,27 @@ public class TaskManagerService {
 		writeTasktoFile(listOfTasks);
 		
 	}
+	
+	
+	public void updateTask(int taskId, Task task) {
+
+		List<Task> listOfTasks = getAllTasks();
+		
+		Iterator<Task> iTasks = listOfTasks.iterator();
+		while (iTasks.hasNext()){
+			Task t = iTasks.next();
+			
+			if (t.getTaskId() == taskId){
+				t.setTaskName(task.getTaskName());
+				t.setTaskDescription(task.getTaskDescription());
+				t.setTaskName(task.getTaskName());
+				t.setTaskStatus(task.getTaskStatus());
+				t.setTaskPriority(task.getTaskPriority());
+				System.out.printf("updated Task with ID %d",taskId);
+			}
+		}
+		writeTasktoFile(listOfTasks);	
+	}
 
 	
 	public Task getTask (int taskId){

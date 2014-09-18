@@ -11,7 +11,8 @@
 			</div>
 		</div>
 		<div class="panel-body">
-			<div class="task" ng-repeat="task in tasks | orderBy:orderProp">
+			<div class="task" ng-repeat="task in tasks | orderBy:orderProp | filter:query:strict">
+				
 				<span ng-if="task.taskPriority=='HIGH'" class="priority priority-red">
 					{{task.taskPriority}}
 				</span>
@@ -33,18 +34,22 @@
 				</div>
 				<div ng-if="task.taskStatus=='ACTIVE'">				
 					<label for="{{task.taskId}}" class="uncheckedClass">
-						{{task.taskName}}
+						{{task.taskName}} 
 						<span class="action-status">{{task.taskStatus}}</span>
 					</label>
 				</div>
-				<div><a href="#/update/{{task.taskId}}">Update</a></div>
+				<div><a href="#/update/{{task.taskId}}" >Update</a></div>
 			</div>
 			
 			Sort by:
 			  <select ng-model="orderProp">
 			    <option value="taskName">Alphabetical</option>
-			    <option value="taskPriority">Priority</option>
+			    <option value="priorityNo">Priority</option>
+			    <option value="taskStatus">Status</option>
+			    
 			  </select>
+			  
+			  Search: <input ng-model="query.taskName">
 		</div>
 	</div>
 	<div id="add-task-panel" class="fadein fadeout addpanel panel" ng-hide="toggle">

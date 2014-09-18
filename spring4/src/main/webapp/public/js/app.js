@@ -64,22 +64,35 @@ taskManagerModule.controller('taskManagerController', function ($scope,$http) {
 	$scope.statuses=['ACTIVE','COMPLETED'];
 	$scope.priorities=['HIGH','LOW','MEDIUM'];
 	
-	$scope.orderProp = 'taskPriority';
+	$scope.orderProp = 'priorityNo';
 	
 	$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 	
-	
+	//for sort by taskPriorityNo
+
 	//get all tasks and display initially
 	$http.get(urlBase+'/tasks').
     	success(function(data) {
 	        $scope.tasks = data;
 	        for(var i=0;i<$scope.tasks.length;i++){
+	        	
+	          if ($scope.tasks[i].taskPriority == "LOW") $scope.tasks[i].priorityNo=2;
+	  		  if ($scope.tasks[i].taskPriority == "MEDIUM") $scope.tasks[i].priorityNo=1;
+	  		  if ($scope.tasks[i].taskPriority == "HIGH") $scope.tasks[i].priorityNo=0;
+	  		  
 	            if($scope.tasks[i].taskStatus=='COMPLETED'){
 	           	 $scope.selection.push($scope.tasks[i].taskId);
 	        }
 	        }
     });
 	
+	
+	$scope.prioritySort = function(task) {
+		  if (task.taskPriority == "LOW") return 2;
+		  if (task.taskPriority == "MEDIUM") return 1;
+		  if (task.taskPriority == "HIGH") return 0;
+		};
+		
 	//add a new task
 	$scope.addTask = function addTask() {
 		if($scope.taskName=="" || $scope.taskDesc=="" || $scope.taskPriority == "" || $scope.taskStatus == ""){

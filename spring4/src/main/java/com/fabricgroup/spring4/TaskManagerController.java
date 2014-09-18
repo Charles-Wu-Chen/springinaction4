@@ -60,5 +60,17 @@ public class TaskManagerController {
 		taskmanagerservice.addTask(task);
 		return taskmanagerservice.getAllTasks();
 		 
-	 }	 	 	 	 
+	 }
+	 
+	 @RequestMapping(value="/tasks/update/{taskId}/{taskName}/{taskDesc}/{taskPriority}/{taskStatus}",method = RequestMethod.POST,headers="Accept=application/json")
+	 public List<Task> updateTask(@PathVariable int taskId, @PathVariable String taskName,@PathVariable String taskDesc,@PathVariable String taskPriority,@PathVariable String taskStatus) throws ParseException {	
+		Task task = new Task();
+		task.setTaskName(taskName);
+		task.setTaskDescription(taskDesc);
+		task.setTaskPriority(taskPriority);
+		task.setTaskStatus(taskStatus);
+		taskmanagerservice.updateTask(taskId, task);
+		return taskmanagerservice.getAllTasks();
+		 
+	 }
 }
