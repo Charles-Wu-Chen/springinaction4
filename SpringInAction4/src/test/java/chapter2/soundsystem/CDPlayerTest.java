@@ -10,14 +10,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.junit.contrib.java.lang.system.StandardOutputStreamLog;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CDPlayerConfig.class)
 public class CDPlayerTest {
 
-	@Rule
-	public final StandardOutputStreamLog log = new StandardOutputStreamLog();
+
 
 	@Autowired
 	private MediaPlayer player;
@@ -47,8 +45,7 @@ public class CDPlayerTest {
 	@Test
 	public void playTest() {
 		player.play();
-		assertEquals("Playing Sgt. Pepper's Lonely Hearts Club Band"
-				+ " by The Beatles", log.getLog());
+		
 	}
 	
 	//@Test
@@ -57,7 +54,6 @@ public class CDPlayerTest {
 		
 		CompactDisc disc = compactDiscFactory.getCompactDisc(title);
 		disc.play();
-		assertEquals("Playing "+title
-				+ " by "+title+"-Artist\n", log.getLog());
+
 	}
 }
