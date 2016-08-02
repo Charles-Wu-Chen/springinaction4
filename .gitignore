@@ -1,2 +1,4 @@
 .classpath
 **/bin
+.metadata
+RemoteSystemsTempFiles
