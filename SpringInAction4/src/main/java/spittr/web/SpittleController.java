@@ -6,12 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import spittr.data.Spittle;
+import spittr.Spittle;
 import spittr.data.SpittleRepository;
 
 @Controller
 @RequestMapping("/spittles")
 public class SpittleController {
+	
 	private SpittleRepository spittleRepository;
 
 	@Autowired
