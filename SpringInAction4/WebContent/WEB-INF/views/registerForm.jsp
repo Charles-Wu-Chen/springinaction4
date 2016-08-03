@@ -9,31 +9,36 @@
 </head>
 <body>
 	<h1>Register</h1>
-	<sf:form method="POST" commandName="spitter">
+	<sf:form method="POST" commandName="spitter"
+		enctype="multipart/form-data">
 First Name: <sf:input path="firstName" />
-<div class="error">
-					<sf:errors path="firstName"></sf:errors>
-				</div>
+		<div class="error">
+			<sf:errors path="firstName"></sf:errors>
+		</div>
 		<br />
 Last Name: <sf:input path="lastName" />
-<div class="error">
-					<sf:errors path="lastName"></sf:errors>
-				</div>
+		<div class="error">
+			<sf:errors path="lastName"></sf:errors>
+		</div>
 		<br />
 Email: <sf:input path="email" />
-<div class="error">
-					<sf:errors path="email"></sf:errors>
-				</div>
+		<div class="error">
+			<sf:errors path="email"></sf:errors>
+		</div>
 		<br />
 Username: <sf:input path="username" />
-<div class="error">
-					<sf:errors path="username"></sf:errors>
-				</div>
+		<div class="error">
+			<sf:errors path="username"></sf:errors>
+		</div>
 		<br />
 Password: <sf:password path="password" />
-<div class="error">
-					<sf:errors path="password"></sf:errors>
-				</div>
+		<div class="error">
+			<sf:errors path="password"></sf:errors>
+		</div>
+		<br />
+profile image: <input type="file"
+name="profilePicture"
+accept="image/jpeg,image/png,image/gif" />
 		<br />
 		<input type="submit" value="Register" />
 	</sf:form>
