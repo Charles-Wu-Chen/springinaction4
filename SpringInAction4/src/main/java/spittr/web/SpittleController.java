@@ -1,7 +1,9 @@
 package spittr.web;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,19 +43,33 @@ public class SpittleController {
 	}
 
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
-	public String showSpittle(
-			@RequestParam("spittle_id") long spittleId, 
-			Model model) {
+	public String showSpittle(@RequestParam("spittle_id") long spittleId, Model model) {
 		model.addAttribute(spittleRepository.findOne(spittleId));
 		return "spittle";
 
 	}
-	
-	@RequestMapping(value="/{spittleId}", method=RequestMethod.GET)
-	public String spittle(
-			@PathVariable("spittleId") long spittleId,
-			Model model){
-		model.addAttribute(spittleRepository.findOne(spittleId));
-		return "spittle";
+
+	@RequestMapping(value = "/{spittleId}", method = RequestMethod.GET)
+	public String spittle(@PathVariable("spittleId") long spittleId, Model model) {
+		
+		try {
+			Spittle spittle = spittleRepository.findOne(spittleId);
+			model.addAttribute(spittle);
+			return "spittle";
+		}
+		catch (EmptyResultDataAccessException e){
+			throw new SpittleNotFoundException();
+		}
+		
 	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String saveSpittle(SpittleForm form, Model model) throws DuplicateSpittleException {
+
+		spittleRepository
+				.save(new Spittle(null, form.getMessage(), new Date(), form.getLongitude(), form.getLatitude()));
+		return "redirect:/spittles";
+
+	}
+
 }

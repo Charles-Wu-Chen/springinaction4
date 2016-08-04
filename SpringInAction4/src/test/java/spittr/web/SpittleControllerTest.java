@@ -20,7 +20,7 @@ import spittr.web.SpittleController;
 public class SpittleControllerTest {
 
   @Test
-  public void shouldShowRecentSpittles() throws Exception {
+  public void houldShowRecentSpittles() throws Exception {
     List<Spittle> expectedSpittles = createSpittleList(20);
     SpittleRepository mockRepository = mock(SpittleRepository.class);
     when(mockRepository.findSpittles(Long.MAX_VALUE, 20))
@@ -32,7 +32,7 @@ public class SpittleControllerTest {
         .build();
 
     mockMvc.perform(get("/spittles"))
-//       .andExpect(view().name("spittles"))
+       .andExpect(view().name("spittles"))
        .andExpect(model().attributeExists("spittleList"))
        .andExpect(model().attribute("spittleList", 
                   hasItems(expectedSpittles.toArray())));
@@ -71,23 +71,23 @@ public class SpittleControllerTest {
       .andExpect(model().attributeExists("spittle"))
       .andExpect(model().attribute("spittle", expectedSpittle));
   }
-//
-//  @Test
-//  public void saveSpittle() throws Exception {
-//    SpittleRepository mockRepository = mock(SpittleRepository.class);
-//    SpittleController controller = new SpittleController(mockRepository);
-//    MockMvc mockMvc = standaloneSetup(controller).build();
-//
-//    mockMvc.perform(post("/spittles")
-//           .param("message", "Hello World") // this works, but isn't really testing what really happens
-//           .param("longitude", "-81.5811668")
-//           .param("latitude", "28.4159649")
-//           )
-//           .andExpect(redirectedUrl("/spittles"));
-//    
-//    verify(mockRepository, atLeastOnce()).save(new Spittle(null, "Hello World", new Date(), -81.5811668, 28.4159649));
-//  }
-//  
+
+  @Test
+  public void saveSpittle() throws Exception {
+    SpittleRepository mockRepository = mock(SpittleRepository.class);
+    SpittleController controller = new SpittleController(mockRepository);
+    MockMvc mockMvc = standaloneSetup(controller).build();
+
+    mockMvc.perform(post("/spittles")
+           .param("message", "Hello World") // this works, but isn't really testing what really happens
+           .param("longitude", "-81.5811668")
+           .param("latitude", "28.4159649")
+           )
+           .andExpect(redirectedUrl("/spittles"));
+    
+    verify(mockRepository, atLeastOnce()).save(new Spittle(null, "Hello World", new Date(), -81.5811668, 28.4159649));
+  }
+  
   private List<Spittle> createSpittleList(int count) {
     List<Spittle> spittles = new ArrayList<Spittle>();
     for (int i=0; i < count; i++) {
