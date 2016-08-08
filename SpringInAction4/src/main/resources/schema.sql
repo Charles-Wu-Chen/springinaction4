@@ -1,16 +1,19 @@
+--for mysql db
 create table Spittle (
-	id identity,
+	id INT         NOT NULL AUTO_INCREMENT,
 	message varchar(140) not null,
 	created_at timestamp not null,
 	latitude double,
-	longitude double
+	longitude double,
+    PRIMARY KEY (`ID`)
 );
 
 create table Spitter (
-	id identity,
+	id INT         NOT NULL AUTO_INCREMENT,
 	username varchar(20) unique not null,
 	password varchar(20) not null,
 	first_name varchar(30) not null,
 	last_name varchar(30) not null,
-	email varchar(30) not null
+	email varchar(30) not null,
+    PRIMARY KEY (`ID`)
 );

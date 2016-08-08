@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>Register</h1>
-	<sf:form method="POST" commandName="spitter"
+	<sf:form method="POST" commandName="spitterForm"
 		enctype="multipart/form-data">
 First Name: <sf:input path="firstName" />
 		<div class="error">
