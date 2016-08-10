@@ -59,7 +59,7 @@ public class SpittleControllerTest {
   
   @Test
   public void testSpittle() throws Exception {
-    Spittle expectedSpittle = new Spittle("Hello", new Date());
+    Spittle expectedSpittle = new Spittle(null, null, "Hello", new Date());
     SpittleRepository mockRepository = mock(SpittleRepository.class);
     when(mockRepository.findOne(12345)).thenReturn(expectedSpittle);
     
@@ -85,13 +85,13 @@ public class SpittleControllerTest {
            )
            .andExpect(redirectedUrl("/spittles"));
     
-    verify(mockRepository, atLeastOnce()).save(new Spittle(null, "Hello World", new Date(), -81.5811668, 28.4159649));
+    verify(mockRepository, atLeastOnce()).save(new Spittle(null, null, "Hello World", new Date()));
   }
   
   private List<Spittle> createSpittleList(int count) {
     List<Spittle> spittles = new ArrayList<Spittle>();
     for (int i=0; i < count; i++) {
-      spittles.add(new Spittle("Spittle " + i, new Date()));
+      spittles.add(new Spittle(null, null, "Spittle " + i, new Date()));
     }
     return spittles;
   }

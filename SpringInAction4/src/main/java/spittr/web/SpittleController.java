@@ -67,7 +67,7 @@ public class SpittleController {
 	public String saveSpittle(SpittleForm form, Model model) throws DuplicateSpittleException {
 
 		spittleRepository
-				.save(new Spittle(null, form.getMessage(), new Date(), form.getLongitude(), form.getLatitude()));
+				.save(new Spittle(null, null, form.getMessage(), new Date()));
 		return "redirect:/spittles";
 
 	}

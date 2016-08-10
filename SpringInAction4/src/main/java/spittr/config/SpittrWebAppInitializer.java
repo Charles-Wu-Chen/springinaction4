@@ -25,8 +25,8 @@ public class SpittrWebAppInitializer extends AbstractAnnotationConfigDispatcherS
 
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
-		System.out.println("getLocation:" + new MultipartConfigElement("/tmp/spittr/uploads").getLocation());
-		registration.setMultipartConfig(new MultipartConfigElement("/tmp/spittr/uploads"));
+		System.out.println("getLocation:" + new MultipartConfigElement("/uploads").getLocation());
+		registration.setMultipartConfig(new MultipartConfigElement("/uploads"));
 	}
 
 }

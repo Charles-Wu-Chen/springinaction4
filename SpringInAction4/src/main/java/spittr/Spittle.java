@@ -2,57 +2,53 @@ package spittr;
 
 import java.util.Date;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class Spittle {
+	
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	
+	@ManyToOne
+	@JoinColumn(name="spitter")
+	private Spitter spitter;
+	
+	@Column
+	private String message;
+	
+	@Column
+	private Date postedTime;
 
-  private final Long id;
-  private final String message;
-  private final Date time;
-  private Double latitude;
-  private Double longitude;
+	public Spittle(Long id, Spitter spitter, String message, Date postedTime) {
+		this.id = id;
+		this.spitter = spitter;
+		this.message = message;
+		this.postedTime = postedTime;
+	}
 
-  public Spittle(String message, Date time) {
-    this(null, message, time, null, null);
-  }
-  
-  public Spittle(Long id, String message, Date time, Double longitude, Double latitude) {
-    this.id = id;
-    this.message = message;
-    this.time = time;
-    this.longitude = longitude;
-    this.latitude = latitude;
-  }
+	public Long getId() {
+		return this.id;
+	}
 
-  public long getId() {
-    return id;
-  }
+	public String getMessage() {
+		return this.message;
+	}
 
-  public String getMessage() {
-    return message;
-  }
+	public Date getPostedTime() {
+		return this.postedTime;
+	}
 
-  public Date getTime() {
-    return time;
-  }
-  
-  public Double getLongitude() {
-    return longitude;
-  }
-  
-  public Double getLatitude() {
-    return latitude;
-  }
-  
-  @Override
-  public boolean equals(Object that) {
-    return EqualsBuilder.reflectionEquals(this, that, "id", "time");
-  }
-  
-  @Override
-  public int hashCode() {
-    return HashCodeBuilder.reflectionHashCode(this, "id", "time");
-  }
-  
+	public Spitter getSpitter() {
+		return this.spitter;
+	}
+
 }

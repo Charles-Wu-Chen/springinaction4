@@ -81,7 +81,7 @@ public class SpitterForm {
   }
 
   public Spitter toSpitter() {
-    return new Spitter(username, password, firstName, lastName, email);
+    return new Spitter(null, username, password, firstName+" "+lastName, email, false);
   }
   
 }
