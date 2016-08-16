@@ -8,8 +8,8 @@ public class SpittleAlertHandler {
 //    System.out.println(spittle.getMessage());
 //  }
 	
-  public void handleSpittleAlert(String spittle) {
-  System.out.println(spittle);
+  public void handleSpittleAlert(Spittle spittle) {
+  System.out.println(spittle.getMessage());
 }
 
 }
